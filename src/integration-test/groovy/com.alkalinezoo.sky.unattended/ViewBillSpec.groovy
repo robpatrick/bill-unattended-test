@@ -66,4 +66,44 @@ class ViewBillSpec extends GebSpec {
         $('#headingThree a[aria-expanded="false"]')
     }
 
+    void "The Sky store panel is open when clicked"() {
+
+        when:"The bill page is visited"
+        go '/bill/viewBill'
+
+        and:"The Package panel is open"
+        println $('#headingOne a')
+        $('#headingOne a[aria-expanded="true"]')
+        println 'Heading One Success'
+
+        and:"The Sky Store panel is closed"
+        println $('#headingTwo a')
+        $('#headingTwo a[aria-expanded="false"]')
+        println 'Heading Two Success'
+
+        and:"The Call Charges panel is closed"
+        println $('#headingThree a[aria-expanded="false"]')
+        $('#headingThree a[aria-expanded="false"]')
+        println 'Heading Three Success'
+
+        then:
+        $('#headingTwo').find( 'a' )[0].click()
+        println 'clicked the anchor!!'
+
+        // Click not working!!!!!
+
+        and:"The Package panel is closed"
+      //  $('#headingOne a[aria-expanded="false"]')
+
+        and:"The Package panel is open"
+        println $('#collapseOne').classes()
+        $('#collapseOne').classes().contains( 'in' )
+        println 'Heading One Success'
+
+        and:"The Call Charges panel is closed"
+        println $('#collapseTwo').classes()
+        !$('#collapseTwo').classes().contains( 'in' )
+        println 'Heading Two Success'
+    }
+
 }

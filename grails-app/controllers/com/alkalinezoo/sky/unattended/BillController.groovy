@@ -26,7 +26,14 @@ class BillController {
          total: bill.total,
          skyPackage: bill.package,
          callCharges: bill.callCharges,
-         skyStore: bill.skyStore]
+         skyStore: bill.skyStore,
+         dropDownContent: ['first item', 'second item']]
     }
 
+    def sendStuff() {
+        println '*' *25
+        println params
+        println '*' *25
+        render "Stuff has been sent"
+    }
 }
